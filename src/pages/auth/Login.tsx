@@ -9,10 +9,9 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is already logged in
     supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
-        navigate("/");
+        navigate("/home");
       }
     });
   }, [navigate]);
@@ -20,11 +19,11 @@ export default function Login() {
   return (
     <div className="min-h-screen flex">
       {/* Left side - Login Form */}
-      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-6 py-12">
+      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-6 py-12 bg-kingdom-dark">
         <div className="w-full max-w-md space-y-8">
           <div className="flex flex-col items-center">
             <Building2 className="h-12 w-12 text-kingdom-primary" />
-            <h2 className="mt-6 text-3xl font-bold text-kingdom-text">Welcome back</h2>
+            <h2 className="mt-6 text-3xl font-bold gradient-text">Welcome back</h2>
             <p className="mt-2 text-sm text-kingdom-muted">
               Please sign in to your account
             </p>
@@ -37,28 +36,36 @@ export default function Login() {
               variables: {
                 default: {
                   colors: {
-                    brand: '#9b87f5',
-                    brandAccent: '#7E69AB',
+                    brand: '#4E9FFF',
+                    brandAccent: '#1CE5E5',
+                    brandButtonText: 'white',
+                    defaultButtonBackground: '#1B1F3B',
+                    defaultButtonBackgroundHover: '#2A2F4C',
                   },
                 },
               },
+              className: {
+                container: 'futuristic-container',
+                button: 'futuristic-button',
+                input: 'futuristic-input',
+              },
             }}
             providers={["google", "azure"]}
-            redirectTo={window.location.origin}
+            redirectTo={window.location.origin + "/home"}
           />
         </div>
       </div>
 
       {/* Right side - Promotional Content */}
-      <div className="hidden lg:flex w-1/2 bg-kingdom-light flex-col items-center justify-center p-12">
+      <div className="hidden lg:flex w-1/2 bg-gradient-dark flex-col items-center justify-center p-12">
         <div className="max-w-md space-y-8">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-kingdom-text">
+            <h3 className="text-2xl font-bold gradient-text">
               Trusted by Property Managers Worldwide
             </h3>
             
             {/* Testimonial */}
-            <blockquote className="p-6 bg-white rounded-lg shadow-sm">
+            <blockquote className="glass-card p-6 rounded-lg">
               <p className="text-kingdom-text mb-4">
                 "MyKingdom has transformed how we manage our properties. The AI insights have helped us reduce costs by 30% while improving tenant satisfaction."
               </p>
@@ -69,13 +76,13 @@ export default function Login() {
             </blockquote>
 
             {/* Trust Badge */}
-            <div className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm">
+            <div className="glass-card p-4 rounded-lg">
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className={`w-5 h-5 ${i < 4 ? "text-yellow-400" : "text-gray-300"}`}
+                      className={`w-5 h-5 ${i < 4 ? "text-kingdom-accent" : "text-kingdom-muted"}`}
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
