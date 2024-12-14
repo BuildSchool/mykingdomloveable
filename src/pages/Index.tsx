@@ -1,4 +1,3 @@
-import { Navigation } from "@/components/layout/Navigation";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { CoreFeaturesSection } from "@/components/landing/CoreFeaturesSection";
@@ -23,15 +22,14 @@ const Index = () => {
           Sign In
         </Button>
       </div>
-      <Navigation />
-      <div className="md:ml-64">
+      <main>
         <HeroSection />
         <FeaturesSection />
         <CoreFeaturesSection />
         <TestimonialsSection />
         <CTASection />
         <Footer />
-      </div>
+      </main>
     </div>
   );
 };
