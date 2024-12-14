@@ -8,19 +8,19 @@ const features = [
     icon: Brain,
     title: "AI-Powered Insights",
     description: "Make data-driven decisions with our advanced AI analytics and predictions.",
-    imagePrompt: "a futuristic AI brain analyzing real estate data with holographic displays showing property insights and predictions"
+    imagePrompt: "a futuristic AI brain analyzing real estate data with holographic displays showing property insights and predictions, in a modern sci-fi style with deep blues and cyan colors"
   },
   {
     icon: Users,
     title: "Smart Maintenance",
     description: "Predict and prevent maintenance issues before they become problems.",
-    imagePrompt: "a smart home system with IoT sensors and AI predictive maintenance dashboard showing real-time property diagnostics"
+    imagePrompt: "a smart home system with IoT sensors and AI predictive maintenance dashboard showing real-time property diagnostics, in a modern sci-fi style with deep blues and cyan colors"
   },
   {
     icon: LineChart,
     title: "ROI Optimization",
     description: "Maximize your returns with AI-driven investment recommendations.",
-    imagePrompt: "a 3D visualization of property investment analytics with AI-generated ROI projections and market trends"
+    imagePrompt: "a 3D visualization of property investment analytics with AI-generated ROI projections and market trends, in a modern sci-fi style with deep blues and cyan colors"
   }
 ];
 
@@ -40,8 +40,7 @@ export const FeaturesSection = () => {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              // Use Bearer token format for authorization
-              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqZGFmZWJjdG9pb3F3cW9saGprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNjE3OTYsImV4cCI6MjA0ODczNzc5Nn0.GZmMBWO1iWTy-k4kGkRQ79D06G6Iq7gjXNM451iRJVM',
+              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqZGFmZWJjdG9pb3F3cW9saGprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNjE3OTYsImV4cCI6MjA0ODczNzc5Nn0.GZmMBWO1iWTy-k4kGkRQ79D06G6Iq7gjXNM451iRJVM'
             },
             body: JSON.stringify({ prompt: feature.imagePrompt })
           });
@@ -85,10 +84,10 @@ export const FeaturesSection = () => {
       
       <div className="max-w-6xl mx-auto relative">
         <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6 text-center">
-          Why Choose MyKingdom.ai?
+          Experience the Future of Property Management
         </h2>
         <p className="text-xl text-kingdom-text/80 mb-16 text-center max-w-3xl mx-auto leading-relaxed">
-          Experience the future of property management with our AI-powered platform that transforms
+          Transform your property management with our AI-powered platform that turns
           complex challenges into seamless solutions.
         </p>
         
@@ -112,7 +111,7 @@ export const FeaturesSection = () => {
                         className="w-full h-full object-cover transition-opacity duration-300"
                         onError={(e) => {
                           console.error(`Error loading image for ${feature.title}`);
-                          e.currentTarget.src = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>`;
+                          e.currentTarget.src = '/placeholder.svg';
                         }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-kingdom-dark/80 to-transparent"></div>
