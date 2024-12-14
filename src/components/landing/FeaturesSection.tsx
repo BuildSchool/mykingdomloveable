@@ -36,13 +36,24 @@ export const FeaturesSection = () => {
         const images: {[key: string]: string} = {};
         
         for (const feature of features) {
-          const { data, error } = await supabase.functions.invoke('generate-feature-image', {
+          console.log(`Generating image for feature: ${feature.title}`);
+          const { data: response, error } = await supabase.functions.invoke('generate-feature-image', {
             body: { prompt: feature.imagePrompt }
           });
 
-          if (error) throw error;
-          if (data.data && data.data[0].url) {
-            images[feature.title] = data.data[0].url;
+          if (error) {
+            console.error(`Error generating image for ${feature.title}:`, error);
+            throw error;
+          }
+
+          console.log(`Response for ${feature.title}:`, response);
+          
+          if (response && response.data && response.data[0] && response.data[0].url) {
+            console.log(`Image URL for ${feature.title}:`, response.data[0].url);
+            images[feature.title] = response.data[0].url;
+          } else {
+            console.error(`Invalid response format for ${feature.title}:`, response);
+            throw new Error('Invalid response format from image generation');
           }
         }
 
@@ -85,13 +96,22 @@ export const FeaturesSection = () => {
               <CardContent className="p-8">
                 <div className="relative w-full h-48 mb-6 rounded-lg overflow-hidden">
                   {loading ? (
-                    <div className="absolute inset-0 bg-kingdom-dark/50 animate-pulse"></div>
+                    <div className="absolute inset-0 bg-kingdom-dark/50 animate-pulse flex items-center justify-center">
+                      <feature.icon className="w-16 h-16 text-kingdom-primary/50 animate-bounce" />
+                    </div>
                   ) : featureImages[feature.title] ? (
-                    <img 
-                      src={featureImages[feature.title]} 
-                      alt={feature.title}
-                      className="w-full h-full object-cover"
-                    />
+                    <>
+                      <img 
+                        src={featureImages[feature.title]} 
+                        alt={feature.title}
+                        className="w-full h-full object-cover transition-opacity duration-300"
+                        onError={(e) => {
+                          console.error(`Error loading image for ${feature.title}`);
+                          e.currentTarget.src = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>`;
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-kingdom-dark/80 to-transparent"></div>
+                    </>
                   ) : (
                     <div className="absolute inset-0 bg-kingdom-dark/50 flex items-center justify-center">
                       <feature.icon className="w-16 h-16 text-kingdom-primary/50" />
