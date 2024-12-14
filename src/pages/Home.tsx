@@ -2,7 +2,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
-import { LogOut, Crown, Building2, Users, Tool, LineChart } from "lucide-react";
+import { LogOut, Crown, Building2, Users, LineChart } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const Home = () => {
@@ -27,7 +27,7 @@ const Home = () => {
       change: "98% occupancy"
     },
     {
-      icon: Tool,
+      icon: Crown,
       title: "Maintenance Tasks",
       value: "8",
       change: "3 urgent"
