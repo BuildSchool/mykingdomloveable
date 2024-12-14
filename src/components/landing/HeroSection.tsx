@@ -48,7 +48,7 @@ export const HeroSection = () => {
           <AspectRatio ratio={16 / 9} className="bg-kingdom-dark/60">
             <div className="relative w-full h-full">
               <img 
-                src="/lovable-uploads/d13ae473-1fa7-4510-8484-f4658a03a62d.png"
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
                 alt="Property Management Demo"
                 className="w-full h-full object-cover opacity-90"
               />
