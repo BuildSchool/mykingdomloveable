@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { WaitlistForm } from "./WaitlistForm";
 
 export const HeroContent = () => {
   return (
@@ -15,19 +15,7 @@ export const HeroContent = () => {
         service to your tenants.
       </p>
       <div className="flex flex-wrap">
-        <Button
-          size="lg"
-          className="mr-4 bg-kingdom-gold hover:bg-kingdom-gold/90"
-        >
-          Get Started
-        </Button>
-        <Button
-          size="lg"
-          variant="outline"
-          className="border-kingdom-cyan text-kingdom-cyan hover:bg-kingdom-cyan/10"
-        >
-          Watch Demo
-        </Button>
+        <WaitlistForm />
       </div>
     </div>
   );
