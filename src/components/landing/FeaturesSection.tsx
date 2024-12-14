@@ -37,22 +37,27 @@ export const FeaturesSection = () => {
         
         for (const feature of features) {
           console.log(`Generating image for feature: ${feature.title}`);
-          const { data: response, error } = await supabase.functions.invoke('generate-feature-image', {
-            body: { prompt: feature.imagePrompt }
+          const response = await fetch('https://fjdafebctoioqwqolhjk.supabase.co/functions/v1/generate-feature-image', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+            },
+            body: JSON.stringify({ prompt: feature.imagePrompt })
           });
 
-          if (error) {
-            console.error(`Error generating image for ${feature.title}:`, error);
-            throw error;
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
 
-          console.log(`Response for ${feature.title}:`, response);
+          const data = await response.json();
+          console.log(`Response for ${feature.title}:`, data);
           
-          if (response && response.data && response.data[0] && response.data[0].url) {
-            console.log(`Image URL for ${feature.title}:`, response.data[0].url);
-            images[feature.title] = response.data[0].url;
+          if (data && data.data && data.data[0] && data.data[0].url) {
+            console.log(`Image URL for ${feature.title}:`, data.data[0].url);
+            images[feature.title] = data.data[0].url;
           } else {
-            console.error(`Invalid response format for ${feature.title}:`, response);
+            console.error(`Invalid response format for ${feature.title}:`, data);
             throw new Error('Invalid response format from image generation');
           }
         }
