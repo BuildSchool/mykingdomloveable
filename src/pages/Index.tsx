@@ -1,7 +1,9 @@
 import { HeroSection } from "@/components/landing/HeroSection";
-import { FeaturesSection } from "@/components/landing/FeaturesSection";
+import { ProblemSection } from "@/components/landing/ProblemSection";
+import { SolutionSection } from "@/components/landing/SolutionSection";
 import { CoreFeaturesSection } from "@/components/landing/CoreFeaturesSection";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
+import { TargetMarketSection } from "@/components/landing/TargetMarketSection";
 import { CTASection } from "@/components/landing/CTASection";
 import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
@@ -24,9 +26,11 @@ const Index = () => {
       </div>
       <main>
         <HeroSection />
-        <FeaturesSection />
+        <ProblemSection />
+        <SolutionSection />
         <CoreFeaturesSection />
         <TestimonialsSection />
+        <TargetMarketSection />
         <CTASection />
         <Footer />
       </main>
