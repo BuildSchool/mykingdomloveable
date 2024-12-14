@@ -33,7 +33,7 @@ export const CoreFeaturesSection = () => {
     <section className="py-20 px-8">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-kingdom-text mb-12 text-center">
-          How MyKingdom Simplifies Property Management
+          Core Platform Features
         </h2>
         
         <div className="space-y-8">
