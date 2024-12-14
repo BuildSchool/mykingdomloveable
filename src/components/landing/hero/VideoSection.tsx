@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 export const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoUrl = "https://fjdafebctoioqwqolhjk.supabase.co/storage/v1/object/public/videos/property-demo.mp4";
+  const videoUrl = "https://fjdafebctoioqwqolhjk.supabase.co/storage/v1/object/public/videos/MyKingdom.mp4?t=2024-12-14T11%3A42%3A29.647Z";
 
   const handlePlayClick = () => {
     setIsPlaying(true);
