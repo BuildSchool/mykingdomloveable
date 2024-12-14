@@ -21,10 +21,12 @@ export default {
       colors: {
         // MyKingdom custom colors
         kingdom: {
-          primary: "#9b87f5",
-          secondary: "#7E69AB",
-          light: "#F1F0FB",
-          text: "#222222",
+          dark: "#1B1F3B", // Deep Midnight Blue
+          primary: "#4E9FFF", // Electric Neon Blue
+          secondary: "#1CE5E5", // Cyan Glow
+          accent: "#FFD700", // Metallic Gold
+          gray: "#E8E8E8",
+          text: "#FFFFFF",
           muted: "#8E9196",
         },
         border: "hsl(var(--border))",
@@ -78,12 +80,27 @@ export default {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        glow: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        },
+        "gradient-flow": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "slide-in": "slide-in 0.2s ease-out",
         "slide-out": "slide-out 0.2s ease-out",
+        glow: "glow 2s ease-in-out infinite",
+        "gradient-flow": "gradient-flow 3s ease infinite",
+      },
+      backgroundImage: {
+        "gradient-primary": "linear-gradient(45deg, #4E9FFF, #1CE5E5)",
+        "gradient-dark": "linear-gradient(45deg, #1B1F3B, #2A2F4C)",
       },
     },
   },

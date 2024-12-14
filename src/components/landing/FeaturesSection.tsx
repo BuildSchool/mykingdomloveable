@@ -21,23 +21,23 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <section className="py-20 px-8 bg-kingdom-light">
+    <section className="py-20 px-8 bg-kingdom-dark/50">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-kingdom-text mb-6 text-center">
+        <h2 className="text-3xl font-bold gradient-text mb-6 text-center">
           Why Choose MyKingdom.ai?
         </h2>
-        <p className="text-lg text-kingdom-muted mb-12 text-center max-w-2xl mx-auto">
+        <p className="text-lg text-kingdom-text/80 mb-12 text-center max-w-2xl mx-auto">
           Managing properties shouldn't be complicated. We eliminate the hassle of tenant management,
           maintenance tracking, and compliance requirements, letting you focus on growing your investment.
         </p>
         
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="border-none shadow-lg">
+            <Card key={index} className="glass-card glow-effect">
               <CardContent className="pt-6">
                 <feature.icon className="w-12 h-12 text-kingdom-primary mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-kingdom-muted">{feature.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-kingdom-text">{feature.title}</h3>
+                <p className="text-kingdom-text/70">{feature.description}</p>
               </CardContent>
             </Card>
           ))}
