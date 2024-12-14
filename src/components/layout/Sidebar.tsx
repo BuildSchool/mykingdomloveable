@@ -3,7 +3,7 @@ import {
   LayoutDashboard,
   Home,
   Users,
-  Tool,
+  Wrench,
   DollarSign,
   LineChart,
   Shield,
@@ -39,7 +39,7 @@ const menuItems: MenuItem[] = [
   },
   {
     title: 'Maintenance',
-    icon: Tool,
+    icon: Wrench,
     subItems: ['Scheduled Maintenance', 'Maintenance Insights', 'Requests'],
   },
   {
