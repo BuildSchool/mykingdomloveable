@@ -41,14 +41,10 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-kingdom-dark">
+    <div className="min-h-screen bg-kingdom-dark pt-16">
       <Navigation />
       <div className="md:ml-64 p-8">
-        <div className="flex justify-between items-center mb-8">
-          <div className="flex items-center gap-3">
-            <Crown className="h-8 w-8 text-kingdom-accent animate-glow" />
-            <h1 className="text-3xl font-bold gradient-text">Welcome to MyKingdom</h1>
-          </div>
+        <div className="flex justify-end mb-8">
           <Button 
             variant="outline" 
             onClick={handleSignOut}
