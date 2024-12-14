@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Brain, Users, LineChart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 
 const features = [
@@ -41,7 +40,8 @@ export const FeaturesSection = () => {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+              // Use Bearer token format for authorization
+              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqZGFmZWJjdG9pb3F3cW9saGprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNjE3OTYsImV4cCI6MjA0ODczNzc5Nn0.GZmMBWO1iWTy-k4kGkRQ79D06G6Iq7gjXNM451iRJVM',
             },
             body: JSON.stringify({ prompt: feature.imagePrompt })
           });
