@@ -4,14 +4,19 @@ import { motion } from "framer-motion";
 export const HeroContent = () => {
   return (
     <div className="space-y-8">
-      <motion.span 
+      <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="inline-block px-4 py-2 rounded-full bg-kingdom-primary/10 text-kingdom-primary border border-kingdom-primary/20"
+        className="relative group"
       >
-        Welcome to MyKingdom
-      </motion.span>
+        <div className="absolute -inset-1 bg-gradient-to-r from-kingdom-primary via-kingdom-secondary to-kingdom-accent rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
+        <span className="relative inline-block px-6 py-3 rounded-full bg-gradient-to-r from-kingdom-dark/90 to-kingdom-dark/80 text-lg font-semibold border border-kingdom-primary/20 shadow-xl backdrop-blur-sm">
+          <span className="bg-gradient-to-r from-kingdom-primary via-kingdom-secondary to-kingdom-accent bg-clip-text text-transparent animate-gradient-flow">
+            Welcome to MyKingdom
+          </span>
+        </span>
+      </motion.div>
       
       <motion.h1 
         initial={{ opacity: 0, y: 20 }}
@@ -50,19 +55,23 @@ export const HeroContent = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}
-        className="flex items-center space-x-4 text-sm text-kingdom-text/60"
+        className="flex items-center space-x-4"
       >
         <div className="flex -space-x-2">
           {[1, 2, 3, 4].map((i) => (
             <div 
               key={i}
-              className="w-8 h-8 rounded-full bg-gradient-to-r from-kingdom-primary to-kingdom-secondary p-[1px]"
+              className="w-10 h-10 rounded-full bg-gradient-to-r from-kingdom-primary to-kingdom-secondary p-[2px] shadow-lg hover:scale-105 transition-transform duration-200"
             >
-              <div className="w-full h-full rounded-full bg-kingdom-dark"></div>
+              <div className="w-full h-full rounded-full bg-kingdom-dark flex items-center justify-center">
+                <span className="text-xs text-kingdom-text/80">★</span>
+              </div>
             </div>
           ))}
         </div>
-        <p>Trusted by 1000+ property managers worldwide</p>
+        <p className="text-base font-medium bg-gradient-to-r from-kingdom-primary to-kingdom-secondary bg-clip-text text-transparent">
+          Trusted by 1000+ property managers worldwide
+        </p>
       </motion.div>
     </div>
   );
