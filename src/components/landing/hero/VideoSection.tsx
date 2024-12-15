@@ -23,8 +23,8 @@ export const VideoSection = () => {
           {!isPlaying ? (
             <>
               <img 
-                src="/lovable-uploads/53dbc70b-bc62-46c0-aa67-78ce7a7e4acb.png"
-                alt="Property Management Demo"
+                src="/lovable-uploads/301626db-f380-428d-8ad0-c5b2ba823b2b.png"
+                alt="MyKingdom Crown"
                 className="w-full h-full object-cover opacity-90"
               />
               <div className="absolute inset-0 flex items-center justify-center">
