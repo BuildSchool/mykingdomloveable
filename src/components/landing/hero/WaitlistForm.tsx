@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { motion } from "framer-motion";
 
 export const WaitlistForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,13 +65,22 @@ export const WaitlistForm = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button size="lg" className="bg-kingdom-gold hover:bg-kingdom-gold/90">
-          Join the Waitlist
-        </Button>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Button 
+            size="lg" 
+            className="relative bg-gradient-to-r from-kingdom-accent via-kingdom-primary to-kingdom-secondary text-white font-bold py-6 px-8 text-lg shadow-xl hover:shadow-kingdom-primary/50 transition-all duration-300 animate-gradient-flow glow-effect overflow-hidden"
+          >
+            Join the Waitlist
+            <div className="absolute inset-0 bg-gradient-to-r from-kingdom-accent/20 via-kingdom-primary/20 to-kingdom-secondary/20 animate-pulse"></div>
+          </Button>
+        </motion.div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">
+          <DialogTitle className="text-2xl font-bold gradient-text">
             Join Our Waitlist
           </DialogTitle>
         </DialogHeader>
@@ -84,6 +94,7 @@ export const WaitlistForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, fullName: e.target.value })
               }
+              className="futuristic-input"
             />
           </div>
           <div className="space-y-2">
@@ -96,6 +107,7 @@ export const WaitlistForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
+              className="futuristic-input"
             />
           </div>
           <div className="space-y-2">
@@ -107,6 +119,7 @@ export const WaitlistForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, country: e.target.value })
               }
+              className="futuristic-input"
             />
           </div>
           <div className="space-y-2">
@@ -118,11 +131,12 @@ export const WaitlistForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, mobileNumber: e.target.value })
               }
+              className="futuristic-input"
             />
           </div>
           <Button
             type="submit"
-            className="w-full bg-kingdom-gold hover:bg-kingdom-gold/90"
+            className="w-full bg-gradient-to-r from-kingdom-accent via-kingdom-primary to-kingdom-secondary text-white font-semibold py-4 hover:shadow-lg transition-all duration-300"
             disabled={isLoading}
           >
             {isLoading ? "Submitting..." : "Submit"}
