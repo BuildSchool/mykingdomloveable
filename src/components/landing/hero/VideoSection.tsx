@@ -23,7 +23,7 @@ export const VideoSection = () => {
           {!isPlaying ? (
             <>
               <img 
-                src="/lovable-uploads/301626db-f380-428d-8ad0-c5b2ba823b2b.png"
+                src="/lovable-uploads/630eaf05-f528-45e4-b54f-1fc8e034637f.png"
                 alt="MyKingdom Crown"
                 className="w-full h-full object-cover opacity-90"
               />
