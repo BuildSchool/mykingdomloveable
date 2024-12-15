@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 export const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoUrl = "https://fjdafebctoioqwqolhjk.supabase.co/storage/v1/object/public/videos/MyKingdom.mp4?t=2024-12-14T11%3A42%3A29.647Z";
+  const videoUrl = "https://fjdafebctoioqwqolhjk.supabase.co/storage/v1/object/public/videos/MyKingdomFinalVersion.mp4?t=2024-12-15T16%3A51%3A25.441Z";
 
   const handlePlayClick = () => {
     setIsPlaying(true);
@@ -23,7 +23,7 @@ export const VideoSection = () => {
           {!isPlaying ? (
             <>
               <img 
-                src="/lovable-uploads/d13ae473-1fa7-4510-8484-f4658a03a62d.png"
+                src="/lovable-uploads/53dbc70b-bc62-46c0-aa67-78ce7a7e4acb.png"
                 alt="Property Management Demo"
                 className="w-full h-full object-cover opacity-90"
               />
