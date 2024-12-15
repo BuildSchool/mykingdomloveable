@@ -21,22 +21,34 @@ export const VideoSection = () => {
         <div className="relative w-full h-full">
           {!isPlaying ? (
             <>
-              <div className="absolute inset-0 bg-gradient-to-b from-kingdom-dark/20 to-kingdom-dark/60" />
-              <div className="absolute inset-0 flex items-center justify-center">
+              {/* Dark overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-b from-kingdom-dark/10 to-kingdom-dark/30" />
+              
+              {/* Thumbnail container */}
+              <div className="absolute inset-0">
                 <img 
-                  src="/lovable-uploads/630eaf05-f528-45e4-b54f-1fc8e034637f.png"
+                  src="/lovable-uploads/c24a9545-363f-48d1-bc29-cf7d00d45215.png"
                   alt="MyKingdom Crown"
                   className="w-full h-full object-cover"
                 />
               </div>
+
+              {/* Visit MyKingdom.ai text */}
+              <div className="absolute top-4 left-4 z-10">
+                <span className="text-lg font-semibold text-white bg-kingdom-dark/40 px-4 py-2 rounded-full backdrop-blur-sm border border-kingdom-primary/30">
+                  Visit MyKingdom.ai
+                </span>
+              </div>
+
+              {/* Play button container */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <Button
                   size="lg"
                   variant="ghost"
-                  className="text-white hover:bg-white/20 transform hover:scale-110 transition-all duration-300 p-8 rounded-full bg-kingdom-primary/20 backdrop-blur-sm border border-kingdom-primary/30 glow-effect animate-pulse"
+                  className="text-white hover:bg-white/20 transform hover:scale-110 transition-all duration-300 p-8 rounded-full bg-kingdom-primary/20 backdrop-blur-sm border border-kingdom-primary/30 glow-effect"
                   onClick={handlePlayClick}
                 >
-                  <PlayCircle className="w-24 h-24" />
+                  <PlayCircle className="w-24 h-24 animate-pulse" />
                 </Button>
               </div>
             </>
