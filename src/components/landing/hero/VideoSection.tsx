@@ -22,10 +22,11 @@ export const VideoSection = () => {
         <div className="relative w-full h-full">
           {!isPlaying ? (
             <>
+              <div className="absolute inset-0 bg-gradient-to-b from-kingdom-dark/20 to-kingdom-dark/60" />
               <img 
                 src="/lovable-uploads/630eaf05-f528-45e4-b54f-1fc8e034637f.png"
                 alt="MyKingdom Crown"
-                className="w-full h-full object-cover opacity-90"
+                className="w-full h-full object-contain p-8"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <Button
