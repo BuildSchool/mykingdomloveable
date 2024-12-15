@@ -1,7 +1,6 @@
 import { HeroSection } from "@/components/landing/HeroSection";
-import { ProblemSection } from "@/components/landing/ProblemSection";
+import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
-import { TargetMarketSection } from "@/components/landing/TargetMarketSection";
 import { CTASection } from "@/components/landing/CTASection";
 import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,11 +11,11 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-kingdom-dark">
+    <div className="min-h-screen bg-gradient-to-b from-kingdom-dark to-black">
       <div className="fixed top-4 right-4 z-50">
         <Button 
           onClick={() => navigate("/login")}
-          className="futuristic-button glow-effect"
+          className="bg-kingdom-primary hover:bg-kingdom-primary/90 text-white"
         >
           <LogIn className="mr-2 h-4 w-4" />
           Sign In
@@ -24,9 +23,8 @@ const Index = () => {
       </div>
       <main>
         <HeroSection />
-        <ProblemSection />
+        <FeaturesSection />
         <TestimonialsSection />
-        <TargetMarketSection />
         <CTASection />
         <Footer />
       </main>
