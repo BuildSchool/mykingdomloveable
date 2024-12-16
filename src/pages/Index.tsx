@@ -1,8 +1,4 @@
 import { HeroSection } from "@/components/landing/HeroSection";
-import { FeaturesSection } from "@/components/landing/FeaturesSection";
-import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
-import { CTASection } from "@/components/landing/CTASection";
-import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { LogIn } from "lucide-react";
@@ -23,10 +19,6 @@ const Index = () => {
       </div>
       <main>
         <HeroSection />
-        <FeaturesSection />
-        <TestimonialsSection />
-        <CTASection />
-        <Footer />
       </main>
     </div>
   );
