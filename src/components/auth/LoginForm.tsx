@@ -60,7 +60,7 @@ export const LoginForm = () => {
       view="sign_in"
       showLinks={true}
       socialLayout="vertical"
-      onlyThirdPartyProviders={true}
+      onlyThirdPartyProviders={false}
     />
   );
 };
