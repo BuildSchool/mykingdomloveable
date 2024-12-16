@@ -1,8 +1,45 @@
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
+import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 export const LoginForm = () => {
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/home`,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          },
+        },
+      });
+
+      if (error) {
+        toast({
+          variant: "destructive",
+          title: "Authentication Error",
+          description: error.message,
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Authentication Error",
+        description: "An unexpected error occurred during sign in.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Auth
       supabaseClient={supabase}
@@ -57,6 +94,7 @@ export const LoginForm = () => {
       view="sign_in"
       showLinks={true}
       socialLayout="vertical"
+      onlyThirdPartyProviders={false}
     />
   );
 };
