@@ -80,12 +80,32 @@ export default function Login() {
                   label: 'text-sm font-medium text-kingdom-text',
                   loader: 'border-kingdom-primary',
                   anchor: 'text-kingdom-primary hover:text-kingdom-secondary transition-colors',
+                  divider: 'my-4',
+                  socialButtons: 'grid grid-cols-2 gap-3',
+                  socialButtonsBlockButton: 'flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white/10 hover:bg-white/20 border border-kingdom-primary/20',
+                },
+              }}
+              providers={["google", "facebook", "microsoft", "linkedin"]}
+              providerScopes={{
+                google: 'profile email',
+                facebook: 'email',
+                microsoft: 'email profile openid',
+                linkedin: 'r_emailaddress r_liteprofile',
+              }}
+              localization={{
+                variables: {
+                  sign_in: {
+                    social_provider_text: "Continue with {{provider}}",
+                  },
+                  sign_up: {
+                    social_provider_text: "Continue with {{provider}}",
+                  },
                 },
               }}
               redirectTo={window.location.origin + "/home"}
               view="sign_in"
               showLinks={true}
-              providers={[]}
+              socialLayout="horizontal"
             />
           </div>
         </div>
