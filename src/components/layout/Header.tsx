@@ -1,4 +1,4 @@
-import { Crown, LogOut } from "lucide-react";
+import { Crown, LogOut, HelpCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
@@ -33,6 +33,13 @@ export const Header = () => {
     navigate("/");
   };
 
+  const scrollToFAQ = () => {
+    const faqSection = document.querySelector('#faq-section');
+    if (faqSection) {
+      faqSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-kingdom-dark/80 backdrop-blur-lg border-b border-kingdom-primary/20">
       <div className="container mx-auto px-4">
@@ -45,19 +52,44 @@ export const Header = () => {
             <span className="text-2xl font-bold gradient-text">MyKingdom</span>
           </button>
 
-          {isAuthenticated && (
+          <div className="flex items-center gap-4">
             <Button
-              onClick={handleSignOut}
+              onClick={scrollToFAQ}
               variant="outline"
               className="relative group overflow-hidden border-kingdom-primary/50 text-kingdom-text hover:text-white hover:border-kingdom-primary/80"
             >
               <span className="absolute inset-0 w-full h-full transition-all duration-300 transform translate-x-full group-hover:translate-x-0 bg-gradient-primary" />
               <span className="relative flex items-center gap-2 group-hover:scale-105 transition-transform duration-200">
-                <LogOut className="w-4 h-4" />
-                Sign Out
+                <HelpCircle className="w-4 h-4" />
+                FAQ
               </span>
             </Button>
-          )}
+
+            {isAuthenticated ? (
+              <Button
+                onClick={handleSignOut}
+                variant="outline"
+                className="relative group overflow-hidden border-kingdom-primary/50 text-kingdom-text hover:text-white hover:border-kingdom-primary/80"
+              >
+                <span className="absolute inset-0 w-full h-full transition-all duration-300 transform translate-x-full group-hover:translate-x-0 bg-gradient-primary" />
+                <span className="relative flex items-center gap-2 group-hover:scale-105 transition-transform duration-200">
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </span>
+              </Button>
+            ) : (
+              <Button
+                onClick={() => navigate("/login")}
+                variant="outline"
+                className="relative group overflow-hidden border-kingdom-primary/50 text-kingdom-text hover:text-white hover:border-kingdom-primary/80"
+              >
+                <span className="absolute inset-0 w-full h-full transition-all duration-300 transform translate-x-full group-hover:translate-x-0 bg-gradient-primary" />
+                <span className="relative flex items-center gap-2 group-hover:scale-105 transition-transform duration-200">
+                  Getting Started
+                </span>
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </header>

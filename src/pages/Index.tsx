@@ -3,6 +3,7 @@ import { WhyChooseSection } from "@/components/landing/WhyChooseSection";
 import { ExperienceFutureSection } from "@/components/landing/ExperienceFutureSection";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { FAQSection } from "@/components/landing/FAQSection";
+import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { LogIn } from "lucide-react";
@@ -26,8 +27,11 @@ const Index = () => {
         <WhyChooseSection />
         <ExperienceFutureSection />
         <TestimonialsSection />
-        <FAQSection />
+        <div id="faq-section">
+          <FAQSection />
+        </div>
       </main>
+      <Footer />
     </div>
   );
 };
