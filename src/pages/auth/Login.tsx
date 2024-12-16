@@ -113,7 +113,6 @@ export default function Login() {
               view="sign_in"
               showLinks={true}
               socialLayout="vertical"
-              order={["email", "social"]}
             />
           </div>
         </div>
