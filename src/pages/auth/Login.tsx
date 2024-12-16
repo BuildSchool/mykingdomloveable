@@ -93,6 +93,15 @@ export default function Login() {
               view="sign_in"
               showLinks={true}
               socialLayout="horizontal"
+              socialButtonStyle="secondary"
+              localization={{
+                variables: {
+                  sign_in: {
+                    social_provider_text: "Continue with",
+                    divider_text: "or continue with social providers"
+                  }
+                }
+              }}
             />
           </div>
         </div>
