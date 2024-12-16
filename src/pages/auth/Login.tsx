@@ -82,24 +82,9 @@ export default function Login() {
                   anchor: 'text-kingdom-primary hover:text-kingdom-secondary transition-colors',
                 },
               }}
-              providers={["google", "facebook", "linkedin", "azure"]}
-              providerScopes={{
-                google: 'profile email',
-                facebook: 'email',
-                linkedin: 'r_emailaddress r_liteprofile',
-                azure: 'email profile'
-              }}
               redirectTo={window.location.origin + "/home"}
               view="sign_in"
               showLinks={true}
-              socialLayout="horizontal"
-              localization={{
-                variables: {
-                  sign_in: {
-                    social_provider_text: "Continue with",
-                  }
-                }
-              }}
             />
           </div>
         </div>
