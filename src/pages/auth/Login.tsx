@@ -93,7 +93,6 @@ export default function Login() {
               view="sign_in"
               showLinks={true}
               socialLayout="horizontal"
-              socialButtonStyle="secondary"
               localization={{
                 variables: {
                   sign_in: {
