@@ -3,7 +3,6 @@ import { WhyChooseSection } from "@/components/landing/WhyChooseSection";
 import { ExperienceFutureSection } from "@/components/landing/ExperienceFutureSection";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { FAQSection } from "@/components/landing/FAQSection";
-import { Footer } from "@/components/layout/Footer";
 
 const Index = () => {
   return (
@@ -17,7 +16,6 @@ const Index = () => {
           <FAQSection />
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
