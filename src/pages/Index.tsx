@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/landing/HeroSection";
 import { WhyChooseSection } from "@/components/landing/WhyChooseSection";
+import { ExperienceFutureSection } from "@/components/landing/ExperienceFutureSection";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { LogIn } from "lucide-react";
@@ -21,6 +22,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <WhyChooseSection />
+        <ExperienceFutureSection />
       </main>
     </div>
   );
