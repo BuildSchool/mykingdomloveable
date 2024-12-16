@@ -9,7 +9,6 @@ export const VideoSection = () => {
   const videoUrl = "https://fjdafebctoioqwqolhjk.supabase.co/storage/v1/object/public/videos/MyKingdomFinalVersion.mp4?t=2024-12-15T16%3A51%3A25.441Z";
 
   useEffect(() => {
-    // Preload the video when component mounts
     const video = document.createElement('video');
     video.preload = 'auto';
     video.src = videoUrl;
@@ -61,15 +60,21 @@ export const VideoSection = () => {
                 </span>
               </div>
 
-              {/* Play button container */}
+              {/* Enhanced Play button container */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <Button
                   size="lg"
                   variant="ghost"
-                  className="text-white hover:bg-white/20 transform hover:scale-110 transition-all duration-300 p-8 rounded-full bg-kingdom-primary/20 backdrop-blur-sm border border-kingdom-primary/30 glow-effect"
                   onClick={handlePlayClick}
+                  className="group relative overflow-hidden text-white hover:scale-110 transition-all duration-300 p-12 rounded-full bg-gradient-to-r from-kingdom-primary/30 to-kingdom-secondary/30 backdrop-blur-md border-2 border-kingdom-primary/50 hover:border-kingdom-secondary"
                 >
-                  <PlayCircle className="w-24 h-24 animate-pulse" />
+                  {/* Animated glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-kingdom-primary via-kingdom-secondary to-kingdom-accent opacity-30 blur-xl group-hover:opacity-50 transition-opacity duration-500"></div>
+                  
+                  {/* Rotating border effect */}
+                  <div className="absolute inset-0 rounded-full border-4 border-transparent bg-gradient-to-r from-kingdom-primary via-kingdom-secondary to-kingdom-accent opacity-30 animate-spin-slow"></div>
+                  
+                  <PlayCircle className="w-32 h-32 relative z-10 animate-pulse text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
                 </Button>
               </div>
             </>
