@@ -31,7 +31,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-kingdom-dark pt-16">
+    <div className="bg-kingdom-dark min-h-[calc(100vh-4rem)] pt-16">
       <Navigation />
       <div className="md:ml-64 p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -52,7 +52,7 @@ const Home = () => {
           ))}
         </div>
 
-        <div className="grid gap-6">
+        <div className="grid gap-6 mb-8">
           <Card className="glass-card p-6 glow-effect group hover:border-kingdom-primary/40 transition-all duration-300">
             <h2 className="text-xl font-semibold mb-4 gradient-text">AI Insights</h2>
             <p className="text-kingdom-text/90">
