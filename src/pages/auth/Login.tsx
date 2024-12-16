@@ -2,7 +2,7 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Building2, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import {
   Carousel,
@@ -57,19 +57,6 @@ export default function Login() {
         </div>
 
         <div className="w-full max-w-md space-y-8 relative z-10">
-          <div className="flex flex-col items-center">
-            <div className="relative">
-              <Building2 className="h-16 w-16 text-kingdom-primary animate-pulse" />
-              <div className="absolute -bottom-2 -right-2">
-                <Star className="h-6 w-6 text-kingdom-accent animate-pulse" />
-              </div>
-            </div>
-            <h2 className="mt-6 text-4xl font-bold gradient-text">Welcome to MyKingdom</h2>
-            <p className="mt-4 text-lg text-kingdom-muted text-center">
-              Manage your properties smarter with AI
-            </p>
-          </div>
-
           <div className="glass-card p-8 rounded-xl shadow-xl backdrop-blur-lg border border-kingdom-primary/20">
             <Auth
               supabaseClient={supabase}
