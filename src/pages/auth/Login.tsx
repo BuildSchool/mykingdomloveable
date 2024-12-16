@@ -4,40 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Building2, Star } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
-
-const testimonials = [
-  {
-    text: "MyKingdom revolutionized how we manage properties. The AI insights are incredible!",
-    author: "Sarah Chen",
-    role: "Property Manager",
-    rating: 5
-  },
-  {
-    text: "The automated maintenance scheduling has saved us countless hours.",
-    author: "Michael Roberts",
-    role: "Real Estate Investor",
-    rating: 5
-  },
-  {
-    text: "Best property management platform I've ever used. Worth every penny!",
-    author: "David Thompson",
-    role: "Portfolio Manager",
-    rating: 5
-  }
-];
 
 export default function Login() {
   const navigate = useNavigate();
-  const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
@@ -105,66 +74,18 @@ export default function Login() {
               }}
               redirectTo={window.location.origin + "/home"}
               view="sign_in"
-              showLinks={false}
+              showLinks={true}
               socialLayout="horizontal"
-              socialButtonSize="medium"
             />
           </div>
         </div>
       </div>
 
-      {/* Right side - Testimonials */}
-      <div className="hidden lg:flex w-1/2 bg-gradient-dark flex-col items-center justify-center p-12 relative">
-        {/* Decorative background */}
+      {/* Right side - Decorative background */}
+      <div className="hidden lg:block w-1/2 bg-gradient-dark relative">
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-kingdom-primary/20 rounded-full filter blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-kingdom-secondary/20 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        {/* Testimonials Carousel */}
-        <div className="relative z-10 w-full max-w-2xl">
-          <Carousel
-            plugins={[plugin.current]}
-            className="w-full"
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-          >
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index}>
-                  <div className="p-6">
-                    <div className="glass-card p-8 rounded-xl relative group hover:scale-[1.02] transition-all duration-300">
-                      <div className="flex mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="w-5 h-5 text-kingdom-accent fill-kingdom-accent"
-                          />
-                        ))}
-                      </div>
-                      <p className="text-lg text-kingdom-text mb-6 italic">
-                        "{testimonial.text}"
-                      </p>
-                      <div className="flex items-center">
-                        <div className="flex flex-col">
-                          <span className="font-semibold text-kingdom-text">
-                            {testimonial.author}
-                          </span>
-                          <span className="text-sm text-kingdom-muted">
-                            {testimonial.role}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 bg-kingdom-dark/50 hover:bg-kingdom-dark border-kingdom-primary/20" />
-            <CarouselNext className="hidden md:flex -right-12 bg-kingdom-dark/50 hover:bg-kingdom-dark border-kingdom-primary/20" />
-          </Carousel>
         </div>
       </div>
     </div>
