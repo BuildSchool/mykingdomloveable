@@ -40,8 +40,34 @@ export default function Login() {
           <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-kingdom-secondary/20 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className="relative z-10 w-full max-w-2xl">
+        {/* Welcome Text and Testimonials */}
+        <div className="relative z-10 w-full max-w-2xl space-y-8">
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl font-bold gradient-text animate-glow">
+              Welcome to MyKingdom
+            </h2>
+            <p className="text-xl text-kingdom-text/90 leading-relaxed">
+              Join thousands of property managers who have transformed their business with our AI-powered platform. Experience the future of property management today.
+            </p>
+            <div className="flex items-center justify-center space-x-2 text-kingdom-text/80">
+              <span className="flex items-center">
+                <span className="inline-block w-2 h-2 bg-kingdom-primary rounded-full mr-2 animate-pulse"></span>
+                Smart Analytics
+              </span>
+              <span className="text-kingdom-primary/50">•</span>
+              <span className="flex items-center">
+                <span className="inline-block w-2 h-2 bg-kingdom-secondary rounded-full mr-2 animate-pulse"></span>
+                AI Insights
+              </span>
+              <span className="text-kingdom-primary/50">•</span>
+              <span className="flex items-center">
+                <span className="inline-block w-2 h-2 bg-kingdom-accent rounded-full mr-2 animate-pulse"></span>
+                24/7 Support
+              </span>
+            </div>
+          </div>
+
+          {/* Testimonials Carousel */}
           <TestimonialsCarousel />
         </div>
       </div>
