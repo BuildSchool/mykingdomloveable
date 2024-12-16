@@ -1,17 +1,37 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { PlayCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoElement, setVideoElement] = useState<HTMLVideoElement | null>(null);
   const videoUrl = "https://fjdafebctoioqwqolhjk.supabase.co/storage/v1/object/public/videos/MyKingdomFinalVersion.mp4?t=2024-12-15T16%3A51%3A25.441Z";
 
-  const handlePlayClick = () => {
+  useEffect(() => {
+    // Preload the video when component mounts
+    const video = document.createElement('video');
+    video.preload = 'auto';
+    video.src = videoUrl;
+    setVideoElement(video);
+
+    return () => {
+      if (video) {
+        video.src = '';
+        video.load();
+      }
+    };
+  }, [videoUrl]);
+
+  const handlePlayClick = async () => {
     setIsPlaying(true);
-    const videoElement = document.getElementById('propertyVideo') as HTMLVideoElement;
-    if (videoElement) {
-      videoElement.play();
+    const video = document.getElementById('propertyVideo') as HTMLVideoElement;
+    if (video) {
+      try {
+        await video.play();
+      } catch (error) {
+        console.error('Error playing video:', error);
+      }
     }
   };
 
@@ -30,6 +50,7 @@ export const VideoSection = () => {
                   src="/lovable-uploads/c24a9545-363f-48d1-bc29-cf7d00d45215.png"
                   alt="MyKingdom Crown"
                   className="w-full h-full object-cover"
+                  loading="eager"
                 />
               </div>
 
@@ -58,6 +79,8 @@ export const VideoSection = () => {
               className="w-full h-full object-cover"
               controls
               src={videoUrl}
+              preload="auto"
+              playsInline
             >
               Your browser does not support the video tag.
             </video>
