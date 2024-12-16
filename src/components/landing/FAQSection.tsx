@@ -178,6 +178,21 @@ export const FAQSection = () => {
             </div>
           ))}
         </div>
+
+      {/* Added CTA Button */}
+      <div className="flex justify-center mt-16">
+        <button 
+          onClick={() => window.location.href = '/login'} 
+          className="relative group"
+        >
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-300 animate-pulse"></div>
+          <div className="relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 overflow-hidden">
+            <span className="relative z-10 flex items-center">
+              Start Your Journey
+              <span className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+            </span>
+          </div>
+        </button>
       </div>
     </section>
   );

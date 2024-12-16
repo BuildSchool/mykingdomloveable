@@ -15,10 +15,10 @@ const Index = () => {
       <div className="fixed top-4 right-4 z-50">
         <Button 
           onClick={() => navigate("/login")}
-          className="bg-kingdom-primary hover:bg-kingdom-primary/90 text-white"
+          className="relative group bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
         >
           <LogIn className="mr-2 h-4 w-4" />
-          Sign In
+          Getting Started
         </Button>
       </div>
       <main>

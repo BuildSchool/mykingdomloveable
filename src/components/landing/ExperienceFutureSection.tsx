@@ -128,7 +128,10 @@ export const ExperienceFutureSection = () => {
 
         {/* CTA Button */}
         <div className="flex justify-center mt-12">
-          <button className="relative group">
+          <button 
+            onClick={() => window.location.href = '/login'} 
+            className="relative group"
+          >
             {/* Animated glow effect */}
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-300 animate-pulse"></div>
             {/* Button content */}
