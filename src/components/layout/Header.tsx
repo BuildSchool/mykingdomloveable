@@ -1,5 +1,5 @@
 import { Crown, LogOut, HelpCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { useToast } from "@/components/ui/use-toast";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
@@ -40,6 +41,8 @@ export const Header = () => {
     }
   };
 
+  const isLoginPage = location.pathname === '/login';
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-kingdom-dark/80 backdrop-blur-lg border-b border-kingdom-primary/20">
       <div className="container mx-auto px-4">
@@ -65,7 +68,7 @@ export const Header = () => {
                   Sign Out
                 </span>
               </Button>
-            ) : (
+            ) : !isLoginPage && (
               <>
                 <Button
                   onClick={scrollToFAQ}
