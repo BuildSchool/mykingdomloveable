@@ -1,18 +1,8 @@
 import { Navigation } from "@/components/layout/Navigation";
-import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
-import { useNavigate } from "react-router-dom";
-import { LogOut, Crown, Building2, Users, LineChart } from "lucide-react";
+import { Building2, Users, Crown, LineChart } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const Home = () => {
-  const navigate = useNavigate();
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    navigate("/");
-  };
-
   const metrics = [
     {
       icon: Building2,
@@ -44,26 +34,15 @@ const Home = () => {
     <div className="min-h-screen bg-kingdom-dark pt-16">
       <Navigation />
       <div className="md:ml-64 p-8">
-        <div className="flex justify-end mb-8">
-          <Button 
-            variant="outline" 
-            onClick={handleSignOut}
-            className="border-kingdom-primary/50 text-kingdom-text hover:bg-kingdom-primary/10"
-          >
-            <LogOut className="mr-2 h-4 w-4" />
-            Sign Out
-          </Button>
-        </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {metrics.map((metric, index) => (
             <Card 
               key={index} 
-              className="glass-card p-6 glow-effect"
+              className="glass-card p-6 glow-effect group hover:border-kingdom-primary/40 transition-all duration-300"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <metric.icon className="h-8 w-8 text-kingdom-primary mb-4" />
+                  <metric.icon className="h-8 w-8 text-kingdom-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
                   <h3 className="text-lg font-medium text-kingdom-text mb-1">{metric.title}</h3>
                   <p className="text-2xl font-bold gradient-text">{metric.value}</p>
                   <p className="text-sm text-kingdom-muted mt-1">{metric.change}</p>
@@ -74,7 +53,7 @@ const Home = () => {
         </div>
 
         <div className="grid gap-6">
-          <Card className="glass-card p-6 glow-effect">
+          <Card className="glass-card p-6 glow-effect group hover:border-kingdom-primary/40 transition-all duration-300">
             <h2 className="text-xl font-semibold mb-4 gradient-text">AI Insights</h2>
             <p className="text-kingdom-text/90">
               Our AI has analyzed your portfolio and identified potential opportunities for optimization:
