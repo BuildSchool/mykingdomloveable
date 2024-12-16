@@ -29,11 +29,9 @@ export const LoginForm = () => {
           divider: 'my-4',
         },
       }}
-      providers={["google", "facebook", "linkedin"]}
+      providers={["google"]}
       providerScopes={{
         google: 'profile email',
-        facebook: 'email',
-        linkedin: 'r_emailaddress r_liteprofile',
       }}
       localization={{
         variables: {
@@ -55,7 +53,7 @@ export const LoginForm = () => {
           },
         },
       }}
-      redirectTo={window.location.origin + "/home"}
+      redirectTo={`${window.location.origin}/home`}
       view="sign_in"
       showLinks={true}
       socialLayout="vertical"
