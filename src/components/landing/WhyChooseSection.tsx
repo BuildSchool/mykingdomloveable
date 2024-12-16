@@ -6,43 +6,46 @@ const features = [
     title: "Smart Portfolio Management",
     description: "Leverage AI-powered insights to optimize your property portfolio performance in real-time.",
     metric: "45% ROI Increase",
-    bgColor: "from-blue-600/90 to-blue-700/90",
+    bgGradient: "from-blue-600/90 via-blue-500/80 to-blue-400/70",
   },
   {
     icon: Clock,
     title: "Automated Excellence",
     description: "Save 15+ hours weekly with intelligent automation for tenant management and maintenance.",
     metric: "60% Time Saved",
-    bgColor: "from-emerald-600/90 to-emerald-700/90",
+    bgGradient: "from-emerald-600/90 via-emerald-500/80 to-emerald-400/70",
   },
   {
     icon: Shield,
     title: "Enterprise-Grade Security",
     description: "Bank-level encryption and compliance measures to protect your valuable property data.",
     metric: "99.9% Uptime",
-    bgColor: "from-purple-600/90 to-purple-700/90",
+    bgGradient: "from-purple-600/90 via-purple-500/80 to-purple-400/70",
   },
   {
     icon: LineChart,
     title: "Revenue Maximization",
     description: "Boost property returns by 23% with predictive analytics and market insights.",
     metric: "23% Higher Returns",
-    bgColor: "from-orange-500/90 to-orange-600/90",
+    bgGradient: "from-orange-500/90 via-orange-400/80 to-orange-300/70",
   },
 ];
 
 export const WhyChooseSection = () => {
   return (
-    <section className="py-20 bg-kingdom-dark relative overflow-hidden">
-      {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-kingdom-dark via-kingdom-dark/95 to-kingdom-dark opacity-90"></div>
+    <section className="py-20 bg-gradient-to-b from-[#0d47a1] to-[#1a237e] relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+      </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-300 via-blue-200 to-purple-300 bg-clip-text text-transparent mb-6">
             Why Choose Our Platform
           </h2>
-          <p className="text-xl text-gray-300/90 max-w-3xl mx-auto">
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
             Experience the future of property management with our innovative features
           </p>
         </div>
@@ -51,15 +54,17 @@ export const WhyChooseSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${feature.bgColor} p-8 transition-all duration-300 hover:scale-[1.02] group`}
+              className="relative overflow-hidden rounded-2xl bg-gradient-to-br p-8 transition-all duration-300 hover:scale-[1.02] group border border-white/10 backdrop-blur-lg"
             >
               {/* Glassmorphic overlay */}
-              <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm"></div>
               
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-6">
-                  <feature.icon className="w-12 h-12 text-white/90" />
-                  <span className="text-white/90 font-semibold">
+                  <div className={`p-3 rounded-xl bg-gradient-to-br ${feature.bgGradient} group-hover:scale-110 transition-transform duration-300`}>
+                    <feature.icon className="w-8 h-8 text-white/90" />
+                  </div>
+                  <span className="text-white/90 font-semibold px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
                     {feature.metric}
                   </span>
                 </div>
@@ -68,20 +73,28 @@ export const WhyChooseSection = () => {
                   {feature.title}
                 </h3>
                 
-                <p className="text-white/80 text-lg leading-relaxed">
+                <p className="text-blue-100 text-lg leading-relaxed">
                   {feature.description}
                 </p>
               </div>
 
-              {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-gradient-flow"></div>
+              {/* Animated gradient border */}
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-gradient-flow"></div>
             </div>
           ))}
         </div>
 
         <div className="flex justify-center mt-12">
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25">
-            Start Your Journey →
+          <button className="relative group">
+            {/* Outer glow */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
+            {/* Button content */}
+            <div className="relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-blue-700 group-hover:to-purple-700">
+              <span className="flex items-center">
+                Start Your Journey
+                <span className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </span>
+            </div>
           </button>
         </div>
       </div>
