@@ -9,9 +9,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import confetti from 'canvas-confetti';
 
 export const WaitlistForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +24,15 @@ export const WaitlistForm = () => {
     country: "",
     mobileNumber: "",
   });
+
+  const triggerSuccessAnimation = () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#4E9FFF', '#1CE5E5', '#FFD700']
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,9 +50,11 @@ export const WaitlistForm = () => {
 
       if (error) throw error;
 
+      triggerSuccessAnimation();
       toast({
-        title: "Success!",
-        description: "You've been added to our waitlist. We'll be in touch soon!",
+        title: "Welcome to MyKingdom! 🎉",
+        description: "You've successfully joined our waitlist. We'll be in touch soon!",
+        className: "bg-gradient-to-r from-kingdom-primary to-kingdom-secondary text-white",
       });
       setIsOpen(false);
       setFormData({
@@ -78,15 +90,25 @@ export const WaitlistForm = () => {
           </Button>
         </motion.div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold gradient-text">
-            Join Our Waitlist
+      <DialogContent className="sm:max-w-[425px] bg-gradient-to-b from-kingdom-dark/95 to-kingdom-dark/90 backdrop-blur-xl border border-kingdom-primary/20">
+        <DialogHeader className="space-y-4">
+          <div className="mx-auto w-20 h-20 rounded-full bg-gradient-to-r from-kingdom-primary to-kingdom-secondary p-[2px]">
+            <div className="w-full h-full rounded-full bg-kingdom-dark flex items-center justify-center">
+              <span className="text-2xl font-bold text-kingdom-text">MK</span>
+            </div>
+          </div>
+          <DialogTitle className="text-2xl font-bold text-center">
+            <span className="bg-gradient-to-r from-kingdom-primary to-kingdom-secondary bg-clip-text text-transparent">
+              Join MyKingdom Waitlist
+            </span>
           </DialogTitle>
+          <p className="text-center text-kingdom-text/80">
+            Be among the first to experience the future of property management
+          </p>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="space-y-2">
-            <Label htmlFor="fullName">Full Name</Label>
+            <Label htmlFor="fullName" className="text-kingdom-text">Full Name</Label>
             <Input
               id="fullName"
               required
@@ -94,11 +116,12 @@ export const WaitlistForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, fullName: e.target.value })
               }
-              className="futuristic-input"
+              className="bg-kingdom-dark/50 border-kingdom-primary/30 text-kingdom-text placeholder:text-kingdom-text/50 focus:border-kingdom-primary focus:ring-kingdom-primary/30"
+              placeholder="Enter your full name"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-kingdom-text">Email</Label>
             <Input
               id="email"
               type="email"
@@ -107,11 +130,12 @@ export const WaitlistForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              className="futuristic-input"
+              className="bg-kingdom-dark/50 border-kingdom-primary/30 text-kingdom-text placeholder:text-kingdom-text/50 focus:border-kingdom-primary focus:ring-kingdom-primary/30"
+              placeholder="Enter your email"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="country">Country</Label>
+            <Label htmlFor="country" className="text-kingdom-text">Country</Label>
             <Input
               id="country"
               required
@@ -119,11 +143,12 @@ export const WaitlistForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, country: e.target.value })
               }
-              className="futuristic-input"
+              className="bg-kingdom-dark/50 border-kingdom-primary/30 text-kingdom-text placeholder:text-kingdom-text/50 focus:border-kingdom-primary focus:ring-kingdom-primary/30"
+              placeholder="Enter your country"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="mobileNumber">Mobile Number</Label>
+            <Label htmlFor="mobileNumber" className="text-kingdom-text">Mobile Number</Label>
             <Input
               id="mobileNumber"
               required
@@ -131,15 +156,16 @@ export const WaitlistForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, mobileNumber: e.target.value })
               }
-              className="futuristic-input"
+              className="bg-kingdom-dark/50 border-kingdom-primary/30 text-kingdom-text placeholder:text-kingdom-text/50 focus:border-kingdom-primary focus:ring-kingdom-primary/30"
+              placeholder="Enter your mobile number"
             />
           </div>
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-kingdom-accent via-kingdom-primary to-kingdom-secondary text-white font-semibold py-4 hover:shadow-lg transition-all duration-300"
+            className="w-full bg-gradient-to-r from-kingdom-accent via-kingdom-primary to-kingdom-secondary text-white font-semibold py-6 hover:shadow-lg hover:shadow-kingdom-primary/30 transition-all duration-300"
             disabled={isLoading}
           >
-            {isLoading ? "Submitting..." : "Submit"}
+            {isLoading ? "Submitting..." : "Join Waitlist"}
           </Button>
         </form>
       </DialogContent>
