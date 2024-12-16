@@ -92,10 +92,10 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="w-64 h-full bg-white shadow-lg overflow-y-auto">
+    <div className="w-64 h-full bg-kingdom-dark/95 backdrop-blur-lg border-r border-kingdom-primary/20 shadow-xl overflow-y-auto">
       {/* Logo */}
-      <div className="p-6 border-b">
-        <h1 className="text-2xl font-bold text-kingdom-primary">MyKingdom</h1>
+      <div className="p-6 border-b border-kingdom-primary/20">
+        <h1 className="text-2xl font-bold gradient-text">MyKingdom</h1>
       </div>
 
       {/* Menu Items */}
@@ -107,18 +107,20 @@ export const Sidebar = () => {
                 setActiveItem(item.title);
                 toggleExpand(item.title);
               }}
-              className={`w-full flex items-center justify-between p-2 rounded-lg transition-colors ${
+              className={`w-full flex items-center justify-between p-3 rounded-lg transition-all duration-300 ${
                 activeItem === item.title
-                  ? 'bg-kingdom-light text-kingdom-primary'
-                  : 'hover:bg-gray-100'
+                  ? 'bg-gradient-primary text-white shadow-lg shadow-kingdom-primary/20'
+                  : 'hover:bg-kingdom-primary/10 text-kingdom-text'
               }`}
             >
               <div className="flex items-center gap-3">
-                <item.icon className="w-5 h-5" />
+                <item.icon className={`w-5 h-5 ${
+                  activeItem === item.title ? 'text-white' : 'text-kingdom-primary'
+                }`} />
                 <span className="text-sm font-medium">{item.title}</span>
               </div>
               {item.subItems && (
-                <span className="text-gray-400">
+                <span className="text-current">
                   {expandedItems.includes(item.title) ? (
                     <ChevronDown className="w-4 h-4" />
                   ) : (
@@ -134,7 +136,7 @@ export const Sidebar = () => {
                 {item.subItems.map((subItem) => (
                   <button
                     key={subItem}
-                    className="w-full text-left p-2 text-sm text-gray-600 hover:text-kingdom-primary rounded-lg transition-colors"
+                    className="w-full text-left p-2 text-sm text-kingdom-text/80 hover:text-kingdom-primary hover:bg-kingdom-primary/5 rounded-lg transition-all duration-300"
                   >
                     {subItem}
                   </button>
