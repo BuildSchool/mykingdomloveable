@@ -1,5 +1,14 @@
 import { Star, User, Users, Globe } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 const testimonials = [
   {
@@ -25,6 +34,30 @@ const testimonials = [
     role: "Property Developer",
     location: "Sydney, Australia",
     avatar: "/placeholder.svg"
+  },
+  {
+    rating: 5,
+    text: "MyKingdom's AI analytics have transformed how we make investment decisions. The ROI predictions are incredibly accurate.",
+    author: "Sarah Chen",
+    role: "Real Estate Investor",
+    location: "Singapore",
+    avatar: "/placeholder.svg"
+  },
+  {
+    rating: 5,
+    text: "The automated maintenance scheduling has cut our response time in half. Our tenants couldn't be happier!",
+    author: "Michael Roberts",
+    role: "Property Manager",
+    location: "Toronto, Canada",
+    avatar: "/placeholder.svg"
+  },
+  {
+    rating: 5,
+    text: "The platform's ability to handle multiple currencies and tax systems has made international property management a breeze.",
+    author: "Elena Martinez",
+    role: "Portfolio Manager",
+    location: "Madrid, Spain",
+    avatar: "/placeholder.svg"
   }
 ];
 
@@ -47,6 +80,10 @@ const stats = [
 ];
 
 export const TestimonialsSection = () => {
+  const plugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
+
   return (
     <section className="py-24 bg-gradient-to-b from-[#001B3D] to-[#002B5C] relative overflow-hidden">
       {/* Animated background elements */}
@@ -75,47 +112,61 @@ export const TestimonialsSection = () => {
           </motion.p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="relative group"
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-              <div className="relative p-8 rounded-2xl bg-gradient-to-br from-blue-900/90 to-blue-800/90 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300">
-                {/* Rating Stars */}
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                
-                {/* Testimonial Text */}
-                <p className="text-lg text-blue-100 mb-6 italic">
-                  "{testimonial.text}"
-                </p>
-                
-                {/* Author Info */}
-                <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-[2px] mr-4">
-                    <div className="w-full h-full rounded-full bg-blue-900 flex items-center justify-center">
-                      <User className="w-6 h-6 text-blue-100" />
+        {/* Testimonials Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mb-16"
+        >
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
+                  <div className="relative group h-full">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                    <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-blue-900/90 to-blue-800/90 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300">
+                      {/* Rating Stars */}
+                      <div className="flex mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-6 h-6 text-yellow-400 fill-yellow-400" />
+                        ))}
+                      </div>
+                      
+                      {/* Testimonial Text */}
+                      <p className="text-lg text-blue-100 mb-6 italic">
+                        "{testimonial.text}"
+                      </p>
+                      
+                      {/* Author Info */}
+                      <div className="flex items-center mt-auto">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-[2px] mr-4">
+                          <div className="w-full h-full rounded-full bg-blue-900 flex items-center justify-center">
+                            <User className="w-6 h-6 text-blue-100" />
+                          </div>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-white">{testimonial.author}</h4>
+                          <p className="text-sm text-blue-200">{testimonial.role}</p>
+                          <p className="text-sm text-blue-300">{testimonial.location}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-white">{testimonial.author}</h4>
-                    <p className="text-sm text-blue-200">{testimonial.role}</p>
-                    <p className="text-sm text-blue-300">{testimonial.location}</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-12 bg-blue-900/50 hover:bg-blue-800 border-blue-700" />
+            <CarouselNext className="hidden md:flex -right-12 bg-blue-900/50 hover:bg-blue-800 border-blue-700" />
+          </Carousel>
+        </motion.div>
 
         {/* Stats Grid */}
         <div className="grid md:grid-cols-3 gap-8">
