@@ -133,10 +133,15 @@ export const TestimonialsSection = () => {
                   <div className="relative group h-full">
                     <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
                     <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-blue-900/90 to-blue-800/90 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300">
-                      {/* Rating Stars */}
-                      <div className="flex mb-4">
+                      {/* Updated Rating Stars */}
+                      <div className="flex mb-4 space-x-1">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-6 h-6 text-yellow-400 fill-yellow-400" />
+                          <div key={i} className="relative group">
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+                            <Star 
+                              className="w-4 h-4 relative z-10 fill-yellow-400 text-yellow-400 transform group-hover:scale-110 transition-transform duration-300" 
+                            />
+                          </div>
                         ))}
                       </div>
                       
