@@ -42,6 +42,7 @@ export const Header = () => {
   };
 
   const isLoginPage = location.pathname === '/login';
+  const isHomePage = location.pathname === '/home';
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-kingdom-dark/80 backdrop-blur-lg border-b border-kingdom-primary/20">
@@ -58,14 +59,16 @@ export const Header = () => {
           <div className="flex items-center gap-4">
             {isAuthenticated ? (
               <div className="flex items-center gap-4">
-                <Button
-                  onClick={() => navigate("/home")}
-                  className="relative group overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-                >
-                  <span className="relative flex items-center gap-2 group-hover:scale-105 transition-transform duration-200">
-                    Dashboard
-                  </span>
-                </Button>
+                {!isHomePage && (
+                  <Button
+                    onClick={() => navigate("/home")}
+                    className="relative group overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                  >
+                    <span className="relative flex items-center gap-2 group-hover:scale-105 transition-transform duration-200">
+                      Dashboard
+                    </span>
+                  </Button>
+                )}
                 <Button
                   onClick={handleSignOut}
                   variant="outline"
