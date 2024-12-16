@@ -98,7 +98,6 @@ export default function Login() {
                 variables: {
                   sign_in: {
                     social_provider_text: "Continue with",
-                    divider_text: "or continue with social providers"
                   }
                 }
               }}
