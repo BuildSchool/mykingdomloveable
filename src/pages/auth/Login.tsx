@@ -4,7 +4,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Building2, Star } from "lucide-react";
-import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -67,9 +66,13 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Right side - Testimonials */}
+      {/* Right side - Decorative section */}
       <div className="hidden lg:flex w-1/2 bg-gradient-dark flex-col items-center justify-center p-12">
-        <TestimonialsSection />
+        <div className="relative w-full h-full">
+          {/* Decorative elements */}
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-kingdom-primary/20 rounded-full filter blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-kingdom-secondary/20 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+        </div>
       </div>
     </div>
   );
