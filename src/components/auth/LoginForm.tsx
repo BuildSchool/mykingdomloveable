@@ -14,10 +14,18 @@ export const LoginForm = () => {
     // Listen for authentication state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event: AuthChangeEvent, session) => {
       console.log('Auth event:', event);
+      console.log('Session:', session);
+      
       if (event === 'SIGNED_IN' && session) {
+        console.log('Redirecting to home after sign in');
         navigate('/home');
+        toast({
+          title: "Welcome back!",
+          description: "You've successfully signed in.",
+        });
       }
       if (event === 'SIGNED_OUT') {
+        console.log('Redirecting to login after sign out');
         navigate('/login');
       }
     });
@@ -25,7 +33,7 @@ export const LoginForm = () => {
     return () => {
       subscription.unsubscribe();
     };
-  }, [navigate]);
+  }, [navigate, toast]);
 
   return (
     <Auth
