@@ -2,14 +2,14 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { AuthError, Session } from "@supabase/supabase-js";
+import { AuthChangeEvent, Session } from "@supabase/supabase-js";
 
 export const useAuthState = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event: AuthChangeEvent, session) => {
       console.log('Auth event:', event);
       console.log('Session:', session);
       console.log('Current URL:', window.location.href);
@@ -26,14 +26,14 @@ export const useAuthState = () => {
       } else if (event === 'SIGNED_OUT') {
         console.log('User signed out');
         navigate('/login');
-      } else if (event === 'USER_DELETED') {
-        console.log('User was deleted');
       } else if (event === 'USER_UPDATED') {
         console.log('User was updated');
       } else if (event === 'PASSWORD_RECOVERY') {
         console.log('Password recovery initiated');
       } else if (event === 'TOKEN_REFRESHED') {
         console.log('Token was refreshed');
+      } else if (event === 'INITIAL_SESSION') {
+        console.log('Initial session loaded');
       }
     });
 
