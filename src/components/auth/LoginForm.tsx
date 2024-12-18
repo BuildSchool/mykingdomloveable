@@ -2,9 +2,29 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Listen for authentication state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('Auth event:', event);
+      if (event === 'SIGNED_IN' && session) {
+        navigate('/home');
+      }
+      if (event === 'USER_DELETED' || event === 'SIGNED_OUT') {
+        navigate('/login');
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [navigate]);
 
   return (
     <Auth
