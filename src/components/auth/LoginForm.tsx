@@ -15,9 +15,10 @@ export const LoginForm = () => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event: AuthChangeEvent, session) => {
       console.log('Auth event:', event);
       console.log('Session:', session);
+      console.log('Current URL:', window.location.href);
       
       if (event === 'SIGNED_IN' && session) {
-        console.log('Redirecting to home after sign in');
+        console.log('User signed in successfully:', session.user);
         navigate('/home');
         toast({
           title: "Welcome back!",
@@ -25,10 +26,24 @@ export const LoginForm = () => {
         });
       }
       if (event === 'SIGNED_OUT') {
-        console.log('Redirecting to login after sign out');
+        console.log('User signed out');
         navigate('/login');
       }
+      // Add logging for other auth events
+      if (event === 'USER_DELETED') console.log('User was deleted');
+      if (event === 'USER_UPDATED') console.log('User was updated');
+      if (event === 'PASSWORD_RECOVERY') console.log('Password recovery initiated');
+      if (event === 'TOKEN_REFRESHED') console.log('Token was refreshed');
     });
+
+    // Log initial auth state
+    const checkInitialSession = async () => {
+      const { data: { session }, error } = await supabase.auth.getSession();
+      console.log('Initial session check:', session);
+      if (error) console.error('Session check error:', error);
+    };
+    
+    checkInitialSession();
 
     return () => {
       subscription.unsubscribe();
